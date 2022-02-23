@@ -10,7 +10,7 @@ body {
   color: black;
   line-height: 1.6;
 }
-.container {
+#container {
   display: flex;
   margin: 30px auto;
   flex-direction: column;
@@ -24,10 +24,40 @@ body {
   background-color: #add8e6;
   color: black;
   font-weight: bold;
+  height: 30px;
+  padding-left: 5px;
 }
-.boxReview {
+#boxReview {
   display: flex;
   margin: 30px auto;
   flex-direction: column;
-  width: 80%;
+  width: 90%;
+  border: 1px solid black;
+}
+.show {
+  display: inline;
+}
+.hide {
+  display: none;
+}
+.maximized {
+  width: 96%;
+  min-height: 100vh;
+  margin: auto;
+}
+#preview {
+  width: 88%;
+  margin: auto;
+}
+img {
+  display: block;
+  max-width: 90%;
+  margin: 2rem auto;
+}
+textarea {
+  min-height: 200px;
+
+  padding: 10px;
+
+  font-size: 0.875rem;
 }

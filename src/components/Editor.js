@@ -1,24 +1,43 @@
 import { useContext } from "react";
 import MarkdownContext from "../context/MarkdownContext";
-import { FaTimes } from "react-icons/fa";
+import { FaExpandArrowsAlt, FaExpandAlt } from "react-icons/fa";
 function Editor() {
- const {editorText,handleChange} = useContext(MarkdownContext);
+  const {
+    editorText,
+    handleChange,
+    maxmizedEditor,
+    
+    rowMax,
+    classEditor,
+    classPreview,
+    classEditorN,
+    
+  } = useContext(MarkdownContext);
   return (
     <>
-      <div className="container">
+     <div className={classPreview}>
+      <div id="container">
         <label htmlFor="editor" className="title">
           <span>Editor</span>
-          <FaTimes style={{ color: "black", cursor: "pointer" }} />
+          <div>
+            <FaExpandArrowsAlt
+              onClick={maxmizedEditor} 
+              className={classEditor}
+            />
+            <FaExpandAlt onClick={maxmizedEditor} className={classEditorN} />
+          </div>
         </label>
         <textarea
           id="editor"
           name="editor"
-          rows="4"
-          cols="20"
+          rows={rowMax}
+          cols="50"
           autoFocus
           onChange={handleChange}
           value={editorText}
+         
         ></textarea>
+      </div>
       </div>
     </>
   );

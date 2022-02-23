@@ -1,8 +1,7 @@
 import React from "react";
-import { marked } from "marked";
-import { createContext, useState, useEffect } from 'react'
- const placeholder = 
-`# Welcome to my React Markdown Previewer!
+import { createContext, useState, useEffect } from "react";
+
+const placeholder = `# Welcome to my React Markdown Previewer!
 
 ## This is a sub-heading...
 ### And here's some other cool stuff:
@@ -47,48 +46,55 @@ And here. | Okay. | I think we get it.
 * And last but not least, let's not forget embedded images:
 
 ![freeCodeCamp Logo](https://cdn.freecodecamp.org/testable-projects-fcc/images/fcc_secondary.svg)
-`
+`;
 
-const MarkdownContext = createContext()
+const MarkdownContext = createContext();
 export const MarkdownProvider = ({ children }) => {
- 
-
- const [editorText, setEditorText] = useState();
- const [prevText, setPrevText] = useState();
-  const [markText, setMarkText] = useState('tis is twst');
+  const [editorText, setEditorText] = useState();
+  
+  
+  const [maxEditor, setMaxEditor] = useState(true);
+  const [maxPreview, setMaxPreview] = useState(false);
   const [setOptions] = useState();
 
- useEffect((editorText) => {
-   setEditorText(placeholder)
-   // handleChange(editorText);
+  const classEditor = maxEditor ? "show" : "hide";
+  const classEditorN = maxEditor ? "hide" : "show";
+  const classPreviewN = maxPreview ? "show" : "hide";
+  const classPreview = maxPreview ? "hide" : "show";
+  const rowMax = maxEditor ? 10 : 100;
+
+  useEffect(() => {
+    setEditorText(placeholder);
   }, []);
 
   const handleChange = (e) => {
-   const newValue = e.target.value;
+    const newValue = e.target.value;
     setEditorText(newValue);
-   console.log(editorText)
-    //setPrevText(editorText)
   };
-  
+  const maxmizedEditor = () => {
+    setMaxEditor((prevState) => !prevState);
+  };
+  const maxmizePreview = () => {
+    setMaxPreview((prevState) => !prevState);
+  };
 
-
-     return (
+  return (
     <MarkdownContext.Provider
       value={{
         editorText,
-        prevText,
-        markText,
+        rowMax,
+        classPreview,
+        classEditor,
+        classEditorN,
+        classPreviewN,
         handleChange,
         setOptions,
-       // marked,
-        
-       
-       
-        
+        maxmizedEditor,
+        maxmizePreview,
       }}
     >
       {children}
     </MarkdownContext.Provider>
-  )
-}
-export default MarkdownContext
+  );
+};
+export default MarkdownContext;

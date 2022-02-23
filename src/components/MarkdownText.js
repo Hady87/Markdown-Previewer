@@ -1,8 +1,8 @@
 
 import React, { useState } from "react";
-import ReactMarkdown from "react-markdown";
+//import ReactMarkdown from "react-markdown";
 import { marked } from "marked";
-import remarkGfm from 'remark-gfm'
+//import remarkGfm from 'remark-gfm'
 import Prism from "prismjs";
 //import { marked } from "marked";
 import { useContext } from "react";
@@ -10,10 +10,9 @@ import MarkdownContext from "../context/MarkdownContext";
 function MarkdownText({props}) {
   const {getMarkdownText} = useContext(MarkdownContext);
   
-  //markText='this is a test'
-   //const [markdown, setMarkdown] = useState("# Markdown Preview");
-  const {editorText,placeholder} = useContext(MarkdownContext);
-  const {markText} = useContext(MarkdownContext);
+ 
+  const {editorText} = useContext(MarkdownContext);
+  //const {markText} = useContext(MarkdownContext);
 
    marked.setOptions({
   breaks: true,
