@@ -13,7 +13,7 @@ function Preview() {
     maxmizePreview,
     classPreviewN,
   } = useContext(MarkdownContext);
- 
+
   return (
     <>
       <div className={classEditor}>
